@@ -8,5 +8,6 @@
   :components ((:file "package")
                (:file "cl-prolog")
 	       (:file "unify")
-	       (:file "pattern-matching")))
+	       (:file "pattern-matching")
+	       (:file "unifier")))
 

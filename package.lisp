@@ -3,5 +3,10 @@
 (defpackage #:cl-prolog
   (:use #:cl)
   (:export
-   #:unify))
+
+   #:unify
+   #:unifier
+   
+   #:buged-unify-1
+   #:buged-unify-2))
 

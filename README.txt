@@ -1,1 +1,1 @@
-This is the stub README.txt for the "cl-prolog" project.
+Thi is the prolog implemetation of PAIP.

@@ -1,5 +1,5 @@
 (in-package #:cl-prolog)
-;; pattern-matching code
+;; Pattern-matching code
 
 (defconstant fail nil
   "Indicates pat-match failure")
@@ -32,10 +32,11 @@
   (cons (cons var val)
 	;; Once we add a "real " binding,
 	;; we can get rid of the dummy no-bindings
-	(if (and (eq bindings no-bindings))
+	(if (equal bindings no-bindings)
 	    nil
 	    bindings)))
 
+;; I changed eq for equal in the last function.
 
 (defun match-variable (var input bindings)
   "Does VAR match input? Uses (or updates) and returns bindings."
