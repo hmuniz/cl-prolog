@@ -1,1 +1,1 @@
-Thi is the prolog implemetation of PAIP.
+This is the prolog implementation of PAIP.
