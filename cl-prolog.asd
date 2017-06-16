@@ -9,5 +9,6 @@
                (:file "prolog")
 	       (:file "unify")
 	       (:file "pattern-matching")
-	       (:file "unifier")))
+	       (:file "unifier")
+	       (:file "exercise-11-2")))
 
