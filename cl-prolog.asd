@@ -6,7 +6,7 @@
   :license "Specify license here"
   :serial t
   :components ((:file "package")
-               (:file "cl-prolog")
+               (:file "prolog")
 	       (:file "unify")
 	       (:file "pattern-matching")
 	       (:file "unifier")))
