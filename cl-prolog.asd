@@ -6,9 +6,12 @@
   :license "Specify license here"
   :serial t
   :components ((:file "package")
-               (:file "prolog")
+               (:file "b-prolog")
+	       (:file "incremental-approach")   ;; This approach is from of chpater 11.3
+	       ;(:file "batch-approach")        ;; This approach is from of chpater 11.2
 	       (:file "unify")
 	       (:file "pattern-matching")
-	       (:file "unifier")
-	       (:file "exercise-11-2")))
+	       (:file "unifier")))
 
+
+;; You can choose which approach you prefer to use. 
