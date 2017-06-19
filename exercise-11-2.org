@@ -21,7 +21,7 @@ Code:
   `(add-clause (append (list ',head) ',body)))
 #+END_SRC
 
-Tets
+Tests
 #+BEGIN_SRC lisp
  (fact (likes Kim Robin))
  (fact (likes Sandy Lee))
