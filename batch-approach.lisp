@@ -22,8 +22,9 @@
 
 ;; (defmacro ?- (&rest goals) `(prove-all ',goals no-bindings))
 
-(defmacro ?- (&rest goals) `(top-level-prove ',goals))
+;; (defmacro ?- (&rest goals) `(top-level-prove ',goals))
 
+(defmacro ?- (&rest goals) `(top-level-prove ',(replace-?-vars goals)))
 
 (defun top-level-prove (goals)
   "Prove the goals, and print variables readably."

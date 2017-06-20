@@ -19,9 +19,15 @@
 (defvar *db-predicates* nil
   "A list of all predicates stored in the database.")
 
+;; (defmacro <- (&rest clause)
+;;   "Add a clause to the data base."
+;;    `(add-clause ',clause))
+
+
 (defmacro <- (&rest clause)
-  "Add a clause to the data base."
-   `(add-clause ',clause))
+  "add a clause to the data base."
+  `(add-clause ',(replace-?-vars clause)))
+
 
 (defun add-clause (clause)
   "Add a clause to the data base, indexed by head's predicate."
@@ -74,3 +80,12 @@
   (sublis (mapcar #'(lambda (var) (cons var (gensym (string var))))
                   (variables-in x))
           x))
+
+
+(defun replace-?-vars (exp)
+    "Replace any ? within exp with a var of the form ?123."
+    (cond ((eq exp '?) (gensym "?"))
+	  ((atom exp) exp)
+	  (t (reuse-cons (replace-?-vars (first exp))
+			 (replace-?-vars (rest exp))
+			 exp))))

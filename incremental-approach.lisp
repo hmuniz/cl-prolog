@@ -58,4 +58,8 @@
       (format t " Type ; to see more or . to stop")
       (continue-p))))
 
-(defmacro ?- (&rest goals) `(top-level-prove ',goals))
+
+
+;; (defmacro ?- (&rest goals) `(top-level-prove ',goals))
+
+(defmacro ?- (&rest goals) `(top-level-prove ',(replace-?-vars goals)))
