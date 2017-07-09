@@ -1,0 +1,16 @@
+#+Title: Exercise 11-1
+#+Date: <2017-07-09 Sun>
+
+The representation of relations has been a list whose first element is a symbol. However, for
+relations with no arguments, some people prefer to write (<- p q r) rather than (<- (p) (q) (r))
+
+Code: 
+#+BEGIN_SRC lisp
+(in-package #:cl-prolog)
+
+(defmacro <- (&rest clause)
+  `(if (consp (car ',clause))
+      (add-clause ',clause))
+      (add-clause (mapcar #'(lambda (x) (list x)) ',clause)))
+
+#+END_SRC
