@@ -1,0 +1,44 @@
+#+Title: Exercise 11-2
+#+Date: <2017-07-11 Tue>
+
+It is somewhat confusing to see "no" printed after one or more valid answers have appeared.
+Modify the program to print "no" only when there are no answers at all, and "no more" in 
+other cases.
+
+#+BEGIN_SRC lisp
+(defvar valid-answers nil) 
+
+
+(defun top-level-prove (goals)
+  (setf valid-answers nil)
+  (prove-all `(,@goals (show-prolog-vars ,@(variables-in goals)))
+             no-bindings)
+  (if valid-answers
+      (format t "~&No-more.")
+      (format t "~&No."))
+  (values))
+
+
+(defun show-prolog-vars (vars bindings other-goals)
+  "Print each variable with its binding.
+  Then ask the user if more solutions are desired."
+  (if (null vars)
+      (format t "~&Yes")
+      (dolist (var vars)
+        (format t "~&~a = ~a" var
+                (subst-bindings bindings var))))
+  (setf valid-answers t)
+  (if (continue-p)
+      fail
+      (prove-all other-goals bindings)))
+
+#+END_SRC
+
+
+Tests: 
+
+#+BEGIN_SRC lisp
+(?- (member 2 (1 2 3 2 1)))
+
+(?- (member 2 (1 3 1)))
+#+END_SRC
