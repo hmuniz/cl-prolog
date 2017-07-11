@@ -11,7 +11,9 @@
 	       (:file "incremental-approach")   ;; This approach is from of chpater 11.3
 	       ;(:file "batch-approach")        ;; This approach is from of chpater 11.2
 	       (:file "unify")
-	       (:file "unifier")))
+	       (:file "unifier")
+	       (:file "destructive-unification")
+	       (:file "prolog-in-prolog")))
 
 
 ;; You can choose which approach you prefer to use. 
