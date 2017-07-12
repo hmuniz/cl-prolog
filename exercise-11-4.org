@@ -1,4 +1,4 @@
-#+Title: Exercise 11-2
+#+Title: Exercise 11-4
 #+Date: <2017-07-11 Tue>
 
 It is somewhat confusing to see "no" printed after one or more valid answers have appeared.
@@ -27,7 +27,7 @@ other cases.
       (dolist (var vars)
         (format t "~&~a = ~a" var
                 (subst-bindings bindings var))))
-  (setf valid-answers t)
+  (setf valid-answers t)e
   (if (continue-p)
       fail
       (prove-all other-goals bindings)))
