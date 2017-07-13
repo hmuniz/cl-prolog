@@ -1,0 +1,50 @@
+#+Title: Exercise 11-9
+#+Date: <2017-07-13 Thu>
+
+The following problem is presented in Wirth1976:
+
+   I married a widow (let's call her W )who has a grown-up daughter (call her D).
+   My father (F), who visited us often, fell in love with my step-daughter and
+   married her. Hence my father became my son-in-law and my step-daughter became 
+   my mother. Some months later, my wife gave birth to a son (S1),who became the
+   brother-in-law of my father, as well as my uncle. The wife of my father, that is,
+   my step-daughter, also had a son (S2).
+
+Represent this situation using the predicates defined in the previous exercise,verify
+ its conclusions, and prove that the narrator of this tale is his own grandfather.
+ 
+Code: 
+
+#+BEGIN_SRC lisp
+(<- (parent ?p ?c) (married ?p ?w) (child ?c ?w)) 
+(<- (parent ?p ?c) (married ?h ?p) (child ?c ?w)) 
+(<- (son-in-law ?s ?p) (parent ?p ?w) (married ?s ?w))
+
+
+(<- (male I))
+(<- (male F))
+(<- (male S1))
+(<- (male S2)) 
+(c- (female W))
+(<- (female D))
+(<- (married I W))
+(<- (married F D))
+(<- (child D W)) 
+(<- (child I F)) 
+(<- (child S1 I)) 
+(<- (child S2 F))
+
+#+END_SRC
+
+Tests: 
+
+#+BEGIN_SRC lisp
+
+(?- (son-in-lawFI))
+
+(?- (mother D I))
+
+(?- (uncle S1 I))
+
+(?- (grandfather I I ) )
+#+END_SRC

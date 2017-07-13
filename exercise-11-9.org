@@ -1,0 +1,44 @@
+#+Title: Exercise 11-9
+#+Date: <2017-07-13 Thu>
+
+  Write Prolog rules to express the terms father, mother, son, daughter,
+and grand- versions of each of them. Also define parent, child, wife,
+husband, brother, sister, uncle, and aunt. You will need to decide 
+which relations are primitive (stored in the Prolog data base) and
+which are derived by rules.
+
+  For example, here's a definition of grandfather that says that G is 
+the grandfather of C if G is the father of some P, who is the parent of C:
+
+#+BEGIN_SRC lisp
+(<- (grandfather ?g ?c) 
+    (father ?g ?p)
+    (parent ?p ?c))
+#+END_SRC
+
+
+Ansewr: 
+
+#+BEGIN_SRC lisp
+(<- (father ?f ?c) (male ?f) (parent ?f ?c))
+(<- (mother ?m ?c) (female ?m) (parent ?m ?c))  
+(<- (son ?s ?p) (male ?f) (parent ?f ?c))
+(<- (daughter ?s ?p) (male ?s) (parent ?p ?s))
+
+
+(<- (grandfather ?g ?c) (father ?g ?p) (parent ?p ?c))
+(<- (grandmother ?g ?c) (mother ?g ?p) (parent ?p ?c))
+(<- (grandson ?gs ?gp) (son ?gs ?p) (parent ?gp ?p))
+(<- (granddaughter ?gd ?gp) (daughter ?gd ?p) (parent ?gp ?p))
+
+
+(<- (parent ?p ?c) (child ?c ?p))
+(<- (wife ?w ?h) (married ?h ?w))
+(<- (husband ?h ?w) (married ?h ?w))
+
+(<- (sibling ?x ?y) (parent ?p ?x) (parent ?p ?y))
+(<- (brother ?b ?x) (male ?b) (sibling ?b ?XI)
+(<- (sister ?s ?x) (female ?s) (sibling ?s ?XI)
+(<- (uncle ?u ?n) (brother ?u ?p) (parent ?p ?n))
+(<- (aunt ?a ?n) (sister ?a ?p) (parent ?p ?n))
+#+END_SRC
