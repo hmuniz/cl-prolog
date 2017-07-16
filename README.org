@@ -1,0 +1,62 @@
+#+title: Cl-prolog
+
+This is the prolog implementation of chapter 11 form PAIP.
+
+- http://norvig.com/paip.html
+
+* How to use
+
+** Loading
+- Load the packge: 
+#+BEGIN_EXAMPLE
+CL-USER> (ql:quickload :cl-prolog)
+To load "cl-prolog":
+  Load 1 ASDF system:
+    cl-prolog
+; Loading "cl-prolog"
+
+(:CL-PROLOG)
+#+END_EXAMPLE
+
+- Change the current packge
+#+BEGIN_EXAMPLE
+CL-USER> (in-package :cl-prolog)
+#<PACKAGE "CL-PROLOG">
+#+END_EXAMPLE
+
+** Using
+
+=<-= Add a clause to the data base
+
+=?-= Prove a query and print answer(s)
+
+=;= To see more solutions
+
+=.= To don't see more solutions
+
+** Tests
+
+#+BEGIN_EXAMPLE
+CL-PROLOG> (<- (member ?item (?item . ?rest)))
+MEMBER
+CL-PROLOG> (<- (member ?item (?x . ?rest)) (member ?item ?rest))
+MEMBER
+CL-PROLOG> (?- (member 2 (1 2 3 2 1)))
+Yes;
+
+Yes;
+
+No.
+; No value
+CL-PROLOG> (?- (member 2 ?list))
+?LIST = (2 . ?REST732);
+
+?LIST = (?X733 2 . ?REST737);
+
+?LIST = (?X733 ?X738 2 . ?REST742);
+
+?LIST = (?X733 ?X738 ?X743 2 . ?REST747).
+
+No.
+; No value
+#+END_EXAMPLE
